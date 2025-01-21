@@ -1,6 +1,7 @@
 # Structural material analysis
-- DAGMC model
+- DAGMC model (future work)
 - CSG model
+- - openmc model
 
 
 ## Materials
