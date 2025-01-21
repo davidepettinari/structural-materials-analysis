@@ -1,4 +1,9 @@
-# Materials
+# Structural material analysis
+- DAGMC model
+- CSG model
+
+
+## Materials
 - Inconel 718
 - Eurofer
 - Hiperfer
