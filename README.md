@@ -21,6 +21,10 @@
 
 ## To-Do List
 
+- [x] Geometry
+- [x] List of materials
+- [ ] Properties of materials
+- [ ] Tallies
 - [ ] Complete the documentation
 - [x] Review the code
 - [ ] Run the tests
