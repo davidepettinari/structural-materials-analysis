@@ -25,7 +25,7 @@
 - [x] Geometry
 - [x] List of materials
 - [ ] Properties of materials
-- [ ] Tallies
+- [x] Tallies
 - [ ] Complete the documentation
 - [x] Review the code
 - [ ] Run the tests
