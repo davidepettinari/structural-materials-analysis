@@ -32,4 +32,5 @@
 - [ ] Publish the project
 
 ## References
-[1]
+[1] Hernández, F. A., & Pereslavtsev, P. (2018). First principles review of options for tritium breeder and neutron multiplier materials for breeding blankets in fusion reactors. Fusion Engineering and Design, 137, 243-256. [https://doi.org/10.1016/j.fusengdes.2018.09.014]
+[2]
