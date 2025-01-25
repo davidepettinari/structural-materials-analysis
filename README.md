@@ -32,4 +32,4 @@
 - [ ] Publish the project
 
 ## References
-- [1]
+[1]
