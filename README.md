@@ -29,6 +29,7 @@
 - [ ] Complete the documentation
 - [x] Review the code
 - [ ] Run the tests
+- [ ] Prepare simulation
 - [ ] Publish the project
 
 ## References
