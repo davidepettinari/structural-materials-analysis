@@ -25,6 +25,7 @@
 ## To-Do List
 
 - [x] Geometry
+- [x] Source
 - [x] List of materials
 - [ ] Properties of materials
 - [x] Tallies
