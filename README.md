@@ -3,7 +3,7 @@
 - CSG model
   - openmc neutronics model
   - openmc activation model
-  - try to use geouned
+  - try to use geouned and stellarmesh
 
 
 ## Materials
