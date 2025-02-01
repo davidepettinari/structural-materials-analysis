@@ -4,6 +4,7 @@
   - openmc neutronics model
   - openmc activation model
   - try to use geouned and stellarmesh
+  - cad2openmc
 
 
 ## Materials
