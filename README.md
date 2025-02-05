@@ -55,4 +55,18 @@
 
 [2] PINT, Bruce, et al. Materials Assessment for FLiBe Fusion Blankets. Oak Ridge National Laboratory (ORNL), Oak Ridge, TN (United States), 2024. [https://www.osti.gov/biblio/2455087/]
 
-[3]
+[3] Malang, S., et al., 1991. Fusion Engineering and Design 16, 95–109
+
+[4] Boullon, R., et al., 2021. Fusion Engineering and Design 171, 112707
+
+[5] Boullon, R., et al., 2021. Fusion Engineering and Design 171, 112707
+
+[6] Sawan, M.E., et al., 2005. Fusion Science and Technology 47, 510–517
+
+[7] Sorbom, B.N., et al., 2015. Fusion Engineering and Design 100, 378–405
+
+[8] Stearney, E.R., et al., 2024. Beryllium Toxicity, in: StatPearls
+
+[9]
+
+[10] 
