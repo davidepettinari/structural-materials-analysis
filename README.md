@@ -28,8 +28,9 @@
 
 | Function| Metric | Goal |
 |---------|--------|------|
-| Breed tritium | TBR | ≥1.1 |
-| Capture neutron energy |||
+| Breed tritium | TBR | ≥ 1.1 |
+| Capture neutron energy | EM | > 1 |
+| Shield magnets | Magnet lifetime | ≥ 5 FPY |
 
 
 
