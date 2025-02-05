@@ -28,7 +28,7 @@
 
 | Function| Metric | Goal |
 |---------|--------|------|
-| Breed tritium | TBR | >1.1 |
+| Breed tritium | TBR | ≥1.1 |
 | Capture neutron energy |||
 
 
