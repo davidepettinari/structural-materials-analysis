@@ -31,6 +31,8 @@
 | Breed tritium | TBR | ≥ 1.1 |
 | Capture neutron energy | EM | > 1 |
 | Shield magnets | Magnet lifetime | ≥ 5 FPY |
+| Activation analysis | Dose rate | < 100 years |
+| Neutron damage | DPA | ≥ 5 years |
 
 
 
