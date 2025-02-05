@@ -24,6 +24,15 @@
 - Silicon Carbide
 - other
 
+## Analysis
+
+| Function| Metric | Goal |
+|---------|--------|------|
+| Breed tritium | TBR | >1.1 |
+| Capture neutron energy |||
+
+
+
 ## To-Do List
 
 - [x] Geometry
