@@ -41,7 +41,7 @@
 - [x] Geometry
 - [x] Source
 - [x] List of materials
-- [ ] Properties of materials
+- [x] Properties of materials
 - [x] Tallies
 - [ ] Complete the documentation
 - [x] Review the code
