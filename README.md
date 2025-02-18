@@ -38,6 +38,7 @@
 
 ## To-Do List
 
+- [x] Obtain discount code for submission 🚀
 - [x] Geometry
 - [x] Source
 - [x] List of materials
