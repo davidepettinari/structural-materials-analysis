@@ -1,6 +1,3 @@
-# Waiver for your submission to ‘Advancements in Fusion Neutronics and Applications in Blanket Technologies’
-DSC-08038817412PRD
-
 # Structural material analysis
 - DAGMC model (future work)
 - CSG model
@@ -68,6 +65,12 @@ DSC-08038817412PRD
 [6] Sawan, M.E., et al., 2005. Fusion Science and Technology 47, 510–517
 
 [7] Sorbom, B.N., et al., 2015. Fusion Engineering and Design 100, 378–405
+
+
+
+# Waiver for your submission to ‘Advancements in Fusion Neutronics and Applications in Blanket Technologies’
+DSC-08038817412PRD
+
 
 [8] Stearney, E.R., et al., 2024. Beryllium Toxicity, in: StatPearls
 
