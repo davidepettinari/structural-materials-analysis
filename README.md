@@ -66,14 +66,18 @@
 
 [7] Sorbom, B.N., et al., 2015. Fusion Engineering and Design 100, 378–405
 
-
-
-# Waiver for your submission to ‘Advancements in Fusion Neutronics and Applications in Blanket Technologies’
-DSC-08038817412PRD
-
-
 [8] Stearney, E.R., et al., 2024. Beryllium Toxicity, in: StatPearls
 
 [9]
 
 [10] 
+
+
+
+# Waiver for your submission to ‘Advancements in Fusion Neutronics and Applications in Blanket Technologies’
+DSC-08038817412PRD
+
+You can enter this code during the submission process for a Type A article (e.g. Original Research) submitted to this Frontiers in Nuclear Engineering Research Topic. Please note that the code is valid until the Research Topic's deadline, 31 July 2025, so must be used by this date.
+
+The code is linked to your davide.pettinari@polito.it email.
+
