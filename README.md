@@ -40,6 +40,7 @@
 
 - [x] Obtain discount code for submission 🚀
 - [x] Geometry
+- [ ] Import the correct blanket dimension
 - [x] Source
 - [x] List of materials
 - [x] Properties of materials
