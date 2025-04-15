@@ -25,9 +25,16 @@ inconel718.add_element("Nb", 0.051250, "wo")
 inconel718.add_element("Mo", 0.030500, "wo")
 inconel718.set_density("g/cm3", 8.19)
 
+# First wall materials
 tungsten = openmc.Material(name="Tungsten")
 tungsten.add_element("W", 1.0, "wo")
 tungsten.set_density("g/cm3", 19.3)
+
+zrnbc = openmc.Material(name="Zr-Nb-C")
+zrnbc.add_element("Zr", 0.252, "ao")
+zrnbc.add_element("Nb", 0.278, "ao")
+zrnbc.add_element("C", 0.47, "ao")
+zrnbc.set_density("g/cm3", 6.944)
 
 beryllium = openmc.Material(name="Beryllium")
 beryllium.add_element("Be", 1.0, "wo")
@@ -51,8 +58,10 @@ dt_plasma.add_nuclide("H2", 1.0)
 dt_plasma.add_nuclide("H3", 1.0)
 dt_plasma.set_density("g/cm3", 1e-5)
 
+first_wall_material = zrnbc
+
 materials = openmc.Materials(
-    [dt_plasma, flibe, boroncarbide, beryllium, tungsten, inconel718]
+    [dt_plasma, flibe, boroncarbide, beryllium, first_wall_material, inconel718]
 )
 
 # Create a list of all nodes
@@ -140,13 +149,13 @@ angle = (-10, 10)
 
 # Plasma
 plasma = tre.components.Plasma(
-    outer_nodes=plasma_nodes, material=None, surf_offset=0.0, angle=angle
+    outer_nodes=plasma_nodes, material=dt_plasma, surf_offset=0.0, angle=angle
 )
 
 # Vessel
 
 first_wall = tre.components.FirstWall(
-    inner_nodes=fw_nodes, thickness=1.0, material=tungsten, angle=angle
+    inner_nodes=fw_nodes, thickness=1.0, material=first_wall_material, angle=angle
 )
 
 vessel_inner_structure = tre.components.VesselInnerStructure(
@@ -169,7 +178,7 @@ vessel_neutron_multiplier = tre.components.VesselNeutronMultiplier(
 
 vessel_outer_structure = tre.components.VesselOuterStructure(
     vessel_neutron_multiplier=vessel_neutron_multiplier,
-    thickness=3.5,
+    thickness=3.0,
     material=inconel718,
     angle=angle,
 )
@@ -184,18 +193,18 @@ sol = tre.components.SOLVacuum(
 
 blanket = tre.components.Blanket(
     vacuum_vessel=vessel_outer_structure,
-    thickness=40,
+    thickness=50,
     material=flibe,
-    nodes=blanket_nodes,
+    nodes=None,
+    # nodes=blanket_nodes,
     angle=angle,
 )
-
 
 # Shield
 
 shield = tre.components.Shield(
     blanket=blanket,
-    thickness=10,
+    thickness=30,
     material=boroncarbide,
     nodes=None,
     angle=angle,
