@@ -454,7 +454,7 @@ if __name__ == "__main__":
 
     first_wall_material = available_materials[args.fw_material]
 
-    model = reactor_model(first_wall_material)
+    model, _ = reactor_model(first_wall_material)
     model.run(geometry_debug=False)
 
     material_tag = args.fw_material
