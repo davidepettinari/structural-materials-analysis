@@ -7,6 +7,23 @@
   - cad2openmc
   - geouned attila4mc
 
+### Atomic aisplacement energies used to compute DPA.
+| Element | Ed (eV) | Element | Ed (eV) |
+|---------|---------|---------|---------|
+| Be      | 31      | Co      | 40      |
+| C       | 31      | Ni      | 40      |
+| Mg      | 25      | Cu      | 40      |
+| Al      | 27      | Zr      | 40      |
+| Si      | 25      | Nb      | 40      |
+| Ca      | 40      | Mo      | 60      |
+| Ti      | 40      | Ag      | 60      |
+| V       | 40      | Ta      | 90      |
+| Cr      | 40      | W       | 55      |
+| Mn      | 40      | Au      | 30      |
+| Fe      | 40      | Pb      | 25      |
+
+E_d is 25eV for all other elements.
+
 [The FISPACT-II User Manual](https://fispact.ukaea.uk/wp-content/uploads/2021/05/FISPACT_manual_old.pdf)
 
 ## Materials
