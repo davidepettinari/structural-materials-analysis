@@ -98,3 +98,59 @@ def plot_neutron_spectrum(tally, fw_volume, number_of_neutrons_per_second):
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.tight_layout()
     plt.show()
+    
+# Tungsten
+w_Ed = 55
+w_mass_u = 183.84
+
+# Zr-Nb_C
+zrnbc_Ed = 0.252 * 40 + 0.278 * 40 + 0.47 * 31
+zrnbc_mass_u = 0.252 * 91.22 + 0.278 * 92.91 + 0.47 * 12.01
+
+def compute_dpa_from_tally(df, number_of_neutrons_per_second, atomic_mass_u, density_g_per_cm3, volume_cm3, Ed_eV=55):
+    """
+    Compute the displacements per atom (DPA) from a damage-energy tally.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The tally DataFrame from OpenMC containing damage energy in eV.
+    number_of_neutrons_per_second : float
+        Neutron production rate [n/s].
+    atomic_mass_u : float
+        Average atomic mass of the material [atomic mass units].
+    density_g_per_cm3 : float
+        Density of the material [g/cm^3].
+    volume_cm3 : float
+        Volume of the region considered [cm^3].
+    Ed_eV : float, optional
+        Displacement threshold energy (default is 55 eV).
+
+    Returns
+    -------
+    dict
+        Dictionary containing intermediate values and final DPA.
+    """
+    u_to_g = 1.66054e-24  # atomic mass unit in grams
+    damage_energy_in_eV = df['mean'].sum()
+
+    displacement_per_source_neutron = damage_energy_in_eV / (2 * Ed_eV)
+    displacement_per_source_neutron_recomb = displacement_per_source_neutron * 0.8
+
+    number_of_neutrons_per_year = number_of_neutrons_per_second * 60 * 60 * 24 * 365.25
+    displacements_total = number_of_neutrons_per_year * displacement_per_source_neutron_recomb
+
+    atom_mass_g = atomic_mass_u * u_to_g
+    number_of_atoms = volume_cm3 * density_g_per_cm3 / atom_mass_g
+
+    DPA = displacements_total / number_of_atoms
+
+    return {
+        "damage_energy_in_eV": damage_energy_in_eV,
+        "displacement_per_source_neutron": displacement_per_source_neutron,
+        "displacement_per_source_neutron_recomb": displacement_per_source_neutron_recomb,
+        "number_of_neutrons_per_year": number_of_neutrons_per_year,
+        "displacements_total": displacements_total,
+        "number_of_atoms": number_of_atoms,
+        "DPA": DPA
+    }
