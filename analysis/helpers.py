@@ -30,7 +30,7 @@ def extract_tbr_contributions(sp, tally_name):
         "Li7": df[df['nuclide'] == 'Li7']['mean'].sum()
     }
 
-def compute_fw_heating(sp, number_of_neutrons_per_second):
+def compute_fw_heating(sp, number_of_neutrons_per_second, volume_cm3):
     """
     Compute and return the power deposition on the first wall for different particle types
     from a statepoint object.
@@ -46,6 +46,7 @@ def compute_fw_heating(sp, number_of_neutrons_per_second):
             A table with particle type and power deposited in MW.
     """
     eV_to_Joules = 1.60218e-19
+    volume_m3 = volume_cm3 * 1e-6  # Convert cm³ to m³
 
     tallies = {
         'neutron': 'heating_fw_n',
@@ -58,10 +59,11 @@ def compute_fw_heating(sp, number_of_neutrons_per_second):
     data = []
     for particle, tally_name in tallies.items():
         tally = sp.get_tally(name=tally_name)
-        heat_MW = eV_to_Joules * number_of_neutrons_per_second * tally.mean.sum() / 1e6
-        data.append((particle.capitalize(), heat_MW))
+        power_MW  = eV_to_Joules * number_of_neutrons_per_second * tally.mean.sum() / 1e6
+        power_density = power_MW / volume_m3  # MW/m³
+        data.append((particle.capitalize(), power_MW, power_density))
 
-    df = pd.DataFrame(data, columns=["Particle", "Power [MW]"])
+    df = pd.DataFrame(data, columns=["Particle", "Power [MW]", "Power Density [MW/m³]"])
     return df
 
 def plot_neutron_spectrum(tally, fw_volume, number_of_neutrons_per_second):
