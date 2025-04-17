@@ -7,6 +7,7 @@
   - cad2openmc
   - geouned attila4mc
 
+[The FISPACT-II User Manual](https://fispact.ukaea.uk/wp-content/uploads/2021/05/FISPACT_manual_old.pdf)
 
 ## Materials
 - Inconel 718
