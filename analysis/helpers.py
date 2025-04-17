@@ -97,7 +97,11 @@ def plot_neutron_spectrum(tally, fw_volume, number_of_neutrons_per_second):
     plt.legend()
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.tight_layout()
+    plt.gca().spines['top'].set_visible(False)
+    plt.gca().spines['right'].set_visible(False)
     plt.show()
+    
+    print(f"Mean neutron flux: {sum(flux):.2e} ± {sum(flux_err):.2e} n/cm²-s")
     
 # Tungsten
 w_Ed = 55

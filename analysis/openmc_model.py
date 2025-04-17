@@ -222,7 +222,7 @@ def reactor_model(first_wall_material):
 
     settings = openmc.Settings()
     settings.batches = 100
-    settings.particles = 100000
+    settings.particles = 10000
     settings.inactive = 0
     settings.run_mode = "fixed source"
     settings.source = source
@@ -442,22 +442,22 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Run OpenMC model with selected first wall material")
     parser.add_argument(
-        "--fw_material",
+        "-m",
         type=str,
         default="tungsten",
         help="Material to assign to first wall (e.g. tungsten, zrnbc, tinbc, etc.)"
     )
     args = parser.parse_args()
 
-    if args.fw_material not in available_materials:
-        raise ValueError(f"Material '{args.fw_material}' not recognized. Available: {list(available_materials)}")
+    if args.m not in available_materials:
+        raise ValueError(f"Material '{args.m}' not recognized. Available: {list(available_materials)}")
 
-    first_wall_material = available_materials[args.fw_material]
+    first_wall_material = available_materials[args.m]
 
     model, _ = reactor_model(first_wall_material)
     model.run(geometry_debug=False)
 
-    material_tag = args.fw_material
+    material_tag = args.m
     original_sp = "statepoint.100.h5"
     renamed_sp = f"{material_tag}.h5"
     if os.path.exists(original_sp):
