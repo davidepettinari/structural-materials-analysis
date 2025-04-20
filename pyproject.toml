@@ -3,6 +3,6 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "structural_material_analysis"
+name = "test"
 version = "0.1"
 dependencies = []
