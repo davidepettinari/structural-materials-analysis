@@ -38,8 +38,8 @@ firstwall = {
 }
 
 structural = {
-    "tungsten": {
-        "mass_u": 183.84,
-        "Ed": 90,
+    "inconel-718": {
+        "mass_u": 58.91,
+        "Ed": 40.34,
     },
 }
