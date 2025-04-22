@@ -2,7 +2,7 @@ import openmc
 import tokamak_radiation_environment as tre
 import structural_material_analysis as sma
 
-def reactor_geometry(first_wall_material):
+def reactor_geometry(plasma_mat, firstwall_mat, structure_mat, breeder_mat, multiplier_mat, shield_mat):
     """Create the reactor geometry."""
     # Create a list of all nodes
     plasma_nodes = (
@@ -89,37 +89,37 @@ def reactor_geometry(first_wall_material):
 
     # Plasma
     plasma = tre.components.Plasma(
-        outer_nodes=plasma_nodes, material=dt_plasma, surf_offset=0.0, angle=angle
+        outer_nodes=plasma_nodes, material=plasma_mat, surf_offset=0.0, angle=angle
     )
 
     # Vessel
 
     first_wall = tre.components.FirstWall(
-        inner_nodes=fw_nodes, thickness=1.0, material=first_wall_material, angle=angle
+        inner_nodes=fw_nodes, thickness=1.0, material=firstwall_mat, angle=angle
     )
 
     vessel_inner_structure = tre.components.VesselInnerStructure(
-        first_wall=first_wall, thickness=1.5, material=inconel718, angle=angle
+        first_wall=first_wall, thickness=1.5, material=structure_mat, angle=angle
     )
 
     vessel_cooling_channel = tre.components.VesselCoolingChannel(
         vessel_inner_structure=vessel_inner_structure,
         thickness=2.0,
-        material=flibe,
+        material=breeder_mat,
         angle=angle,
     )
 
     vessel_neutron_multiplier = tre.components.VesselNeutronMultiplier(
         vessel_cooling_channel=vessel_cooling_channel,
         thickness=1.0,
-        material=beryllium,
+        material=multiplier_mat,
         angle=angle,
     )
 
     vessel_outer_structure = tre.components.VesselOuterStructure(
         vessel_neutron_multiplier=vessel_neutron_multiplier,
         thickness=3.0,
-        material=inconel718,
+        material=structure_mat,
         angle=angle,
     )
 
@@ -134,7 +134,7 @@ def reactor_geometry(first_wall_material):
     blanket = tre.components.Blanket(
         vacuum_vessel=vessel_outer_structure,
         thickness=50,
-        material=flibe,
+        material=breeder_mat,
         nodes=None,
         # nodes=blanket_nodes,
         angle=angle,
@@ -145,7 +145,7 @@ def reactor_geometry(first_wall_material):
     shield = tre.components.Shield(
         blanket=blanket,
         thickness=30,
-        material=boroncarbide,
+        material=shield_mat,
         nodes=None,
         angle=angle,
     )
