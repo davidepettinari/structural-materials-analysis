@@ -105,17 +105,21 @@ def plot_neutron_spectrum(tally, fw_volume, number_of_neutrons_per_second):
     
     print(f"Mean neutron flux: {sum(flux):.2e} ± {sum(flux_err):.2e} n/cm²-s")
     
-# Tungsten
-w_Ed = 55
-w_mass_u = 183.84
-
-# Zr-Nb_C
-zrnbc_Ed = 0.252 * 40 + 0.278 * 40 + 0.47 * 31
-zrnbc_mass_u = 0.252 * 91.22 + 0.278 * 92.91 + 0.47 * 12.01
-
-#Ti-Nb-C
-tinbc_Ed = 0.168 * 40 + 0.373 * 40 + 0.459 * 31
-tinbc_mass_u = 0.168 * 47.87 + 0.373 * 92.91 + 0.459 * 12.01
+material_properties = {
+    "tungsten": {
+        "mass_u": 183.84,
+        "Ed": 90,
+    },
+    "tinbc": {
+        "mass_u": 0.168 * 47.87 + 0.373 * 92.91 + 0.459 * 12.01,
+        "Ed": 0.168 * 40 + 0.373 * 40 + 0.459 * 31,
+    },
+    "zrnbc": {
+        "mass_u": 0.252 * 91.22 + 0.278 * 92.91 + 0.47 * 12.01,
+        "Ed": 0.252 * 40 + 0.278 * 40 + 0.47 * 31,
+    },
+    # altri materiali...
+}
 
 def compute_dpa_from_tally(df, number_of_neutrons_per_second, atomic_mass_u, density_g_per_cm3, volume_cm3, Ed_eV=55):
     """
