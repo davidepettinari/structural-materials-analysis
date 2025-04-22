@@ -1,2 +1,2 @@
 from .materials import *
-from .material_properties import *
+from .properties import *
