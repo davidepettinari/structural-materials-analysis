@@ -4,27 +4,28 @@ import structural_material_analysis as sma
 import tokamak_radiation_environment as tre
 
 
-def reactor_model(first_wall_material):
+def reactor_model(structural_material):
     """Returns an openmc model of the ARC-class model.
 
     Returns:
         the openmc model
     """
     dt_plasma = sma.materials.dt_plasma
-    inconel718 = sma.materials.inconel718
+    tungsten = sma.materials.tungsten
     flibe = sma.materials.flibe
     beryllium = sma.materials.beryllium
     boroncarbide = sma.materials.boroncarbide
 
     materials = openmc.Materials([
-        dt_plasma, 
+        dt_plasma,
+        tungsten,
+        structural_material,
         flibe, 
         boroncarbide, 
         beryllium, 
-        first_wall_material, 
-        inconel718])
+        ])
 
-    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, first_wall_material, inconel718, flibe, beryllium, boroncarbide)
+    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, structural_material, flibe, beryllium, boroncarbide)
     
     ############################################################################
     # Define Settings
@@ -87,17 +88,19 @@ def reactor_model(first_wall_material):
     tbr_cc_tally.scores = ["(n,Xt)"]
     tbr_cc_tally.nuclides = [openmc.Nuclide("Li6"), openmc.Nuclide("Li7")]
     tallies.append(tbr_cc_tally)
-
     tbr_blanket_tally = openmc.Tally(name="TBR blanket")
     tbr_blanket_tally.filters = [blanket_filter]
     tbr_blanket_tally.scores = ["(n,Xt)"]
     tbr_blanket_tally.nuclides = [openmc.Nuclide("Li6"), openmc.Nuclide("Li7")]
     tallies.append(tbr_blanket_tally)
-
     tbr_tally = openmc.Tally(name="TBR")
     tbr_tally.scores = ["(n,Xt)"]
     tbr_tally.nuclides = [openmc.Nuclide("Li6"), openmc.Nuclide("Li7")]
     tallies.append(tbr_tally)
+    tbr_energy_tally = openmc.Tally(name="TBR(energy)")
+    tbr_energy_tally.filters = [energy_filter]
+    tbr_energy_tally.scores = ["(n,Xt)"]
+    tallies.append(tbr_energy_tally)
 
     # NEUTRON SPECTRA
     # FW
@@ -105,6 +108,16 @@ def reactor_model(first_wall_material):
     spectrafw_cell_tally.filters = [fw_filter, neutron_particle_filter, energy_filter]
     spectrafw_cell_tally.scores = ["flux"]
     tallies.append(spectrafw_cell_tally)
+    # STR1
+    spectra_str1_cell_tally = openmc.Tally(name="neutron_spectra_str1")
+    spectra_str1_cell_tally.filters = [str1_filter, neutron_particle_filter, energy_filter]
+    spectra_str1_cell_tally.scores = ["flux"]
+    tallies.append(spectra_str1_cell_tally)
+    # STR2
+    spectra_str2_cell_tally = openmc.Tally(name="neutron_spectra_str2")
+    spectra_str2_cell_tally.filters = [str2_filter, neutron_particle_filter, energy_filter]
+    spectra_str2_cell_tally.scores = ["flux"]
+    tallies.append(spectra_str2_cell_tally)
 
     # HEATING
     # FW
@@ -112,26 +125,64 @@ def reactor_model(first_wall_material):
     heating_fw_tally.scores = ["heating"]
     heating_fw_tally.filters = [fw_filter]
     tallies.append(heating_fw_tally)
-
     heating_fw_n_tally = openmc.Tally(name="heating_fw_n")
     heating_fw_n_tally.scores = ["heating"]
     heating_fw_n_tally.filters = [fw_filter, neutron_particle_filter]
     tallies.append(heating_fw_n_tally)
-
     heating_fw_e_tally = openmc.Tally(name="heating_fw_electron")
     heating_fw_e_tally.scores = ["heating"]
     heating_fw_e_tally.filters = [fw_filter, electron_particle_filter]
     tallies.append(heating_fw_e_tally)
-
     heating_fw_g_tally = openmc.Tally(name="heating_fw_photon")
     heating_fw_g_tally.scores = ["heating"]
     heating_fw_g_tally.filters = [fw_filter, photon_particle_filter]
     tallies.append(heating_fw_g_tally)
-
     heating_fw_p_tally = openmc.Tally(name="heating_fw_positron")
     heating_fw_p_tally.scores = ["heating"]
     heating_fw_p_tally.filters = [fw_filter, positron_particle_filter]
     tallies.append(heating_fw_p_tally)
+    # STR1
+    heating_str1_tally = openmc.Tally(name="heating_str1")
+    heating_str1_tally.scores = ["heating"]
+    heating_str1_tally.filters = [str1_filter]
+    tallies.append(heating_str1_tally)
+    heating_str1_n_tally = openmc.Tally(name="heating_str1_n")
+    heating_str1_n_tally.scores = ["heating"]
+    heating_str1_n_tally.filters = [str1_filter, neutron_particle_filter]
+    tallies.append(heating_str1_n_tally)
+    heating_str1_e_tally = openmc.Tally(name="heating_str1_electron")
+    heating_str1_e_tally.scores = ["heating"]
+    heating_str1_e_tally.filters = [str1_filter, electron_particle_filter]
+    tallies.append(heating_str1_e_tally)
+    heating_str1_g_tally = openmc.Tally(name="heating_str1_photon")
+    heating_str1_g_tally.scores = ["heating"]
+    heating_str1_g_tally.filters = [str1_filter, photon_particle_filter]
+    tallies.append(heating_str1_g_tally)
+    heating_str1_p_tally = openmc.Tally(name="heating_str1_positron")
+    heating_str1_p_tally.scores = ["heating"]
+    heating_str1_p_tally.filters = [str1_filter, positron_particle_filter]
+    tallies.append(heating_str1_p_tally)
+    # STR2
+    heating_str2_tally = openmc.Tally(name="heating_str2")
+    heating_str2_tally.scores = ["heating"]
+    heating_str2_tally.filters = [str2_filter]
+    tallies.append(heating_str2_tally)
+    heating_str2_n_tally = openmc.Tally(name="heating_str2_n")
+    heating_str2_n_tally.scores = ["heating"]
+    heating_str2_n_tally.filters = [str2_filter, neutron_particle_filter]
+    tallies.append(heating_str2_n_tally)
+    heating_str2_e_tally = openmc.Tally(name="heating_str2_electron")
+    heating_str2_e_tally.scores = ["heating"]
+    heating_str2_e_tally.filters = [str2_filter, electron_particle_filter]
+    tallies.append(heating_str2_e_tally)
+    heating_str2_g_tally = openmc.Tally(name="heating_str2_photon")
+    heating_str2_g_tally.scores = ["heating"]
+    heating_str2_g_tally.filters = [str2_filter, photon_particle_filter]
+    tallies.append(heating_str2_g_tally)
+    heating_str2_p_tally = openmc.Tally(name="heating_str2_positron")
+    heating_str2_p_tally.scores = ["heating"]
+    heating_str2_p_tally.filters = [str2_filter, positron_particle_filter]
+    tallies.append(heating_str2_p_tally)
 
     # DPA
     # FW
@@ -139,6 +190,16 @@ def reactor_model(first_wall_material):
     damage_fw_tally.scores = ["damage-energy"]
     damage_fw_tally.filters = [fw_filter]
     tallies.append(damage_fw_tally)
+    # STR1
+    damage_str1_tally = openmc.Tally(name="dpa_str1")
+    damage_str1_tally.scores = ["damage-energy"]
+    damage_str1_tally.filters = [str1_filter]
+    tallies.append(damage_str1_tally)
+    # STR2
+    damage_str2_tally = openmc.Tally(name="dpa_str2")
+    damage_str2_tally.scores = ["damage-energy"]
+    damage_str2_tally.filters = [str2_filter]
+    tallies.append(damage_str2_tally)
 
     model = openmc.Model(
         materials=materials, geometry=geometry, settings=settings, tallies=tallies
@@ -149,27 +210,20 @@ def reactor_model(first_wall_material):
 ############################################################################
 
 available_materials = {
-    "tungsten": sma.materials.tungsten,
-    "zrnbc": sma.materials.zrnbc,
-    "tinbc": sma.materials.tinbc,
-    "vmoc": sma.materials.vmoc,
-    "vtac": sma.materials.vtac,
-    "zrhfc": sma.materials.zrhfc,
-    "zrtac": sma.materials.zrtac,
-    "nbhfc": sma.materials.nbhfc,
-    "hftac": sma.materials.hftac,
+    "inconel718": sma.materials.inconel718,
+    "ss316l": sma.materials.ss316l,
 }
 
 if __name__ == "__main__":
     import argparse
     import os
 
-    parser = argparse.ArgumentParser(description="Run OpenMC model with selected first wall material")
+    parser = argparse.ArgumentParser(description="Run OpenMC model with selected structural material")
     parser.add_argument(
         "-m",
         type=str,
-        default="tungsten",
-        help="Material to assign to first wall (e.g. tungsten, zrnbc, tinbc, etc.)"
+        default="inconel718",
+        help="Material to assign to first wall (e.g. inconel718, ss316l, eurofer, etc.)"
     )
     args = parser.parse_args()
 
