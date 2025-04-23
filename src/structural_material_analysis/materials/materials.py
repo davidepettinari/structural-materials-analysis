@@ -21,6 +21,18 @@ inconel718.add_element("Nb", 0.051250, "wo")
 inconel718.add_element("Mo", 0.030500, "wo")
 inconel718.set_density("g/cm3", 8.19)
 
+ss316l = openmc.Material(name="Stainless Steel 316L")
+ss316l.add_element("C", 0.000300, "wo")
+ss316l.add_element("Mn", 0.020000, "wo")
+ss316l.add_element("P", 0.000450, "wo")
+ss316l.add_element("S", 0.000300, "wo")
+ss316l.add_element("Si", 0.010000, "wo")
+ss316l.add_element("Cr", 0.170000, "wo")
+ss316l.add_element("Ni", 0.120000, "wo")
+ss316l.add_element("Mo", 0.025000, "wo")
+ss316l.add_element("Fe", 0.653950, "wo")
+ss316l.set_density("g/cm3", 8.0)
+
 # First wall materials
 tungsten = openmc.Material(name="Tungsten")
 tungsten.add_element("W", 1.0, "wo")
