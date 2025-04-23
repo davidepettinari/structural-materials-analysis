@@ -16,13 +16,13 @@ def reactor_model(first_wall_material):
     beryllium = sma.materials.beryllium
     boroncarbide = sma.materials.boroncarbide
 
-    materials = [
+    materials = openmc.Materials([
         dt_plasma, 
         flibe, 
         boroncarbide, 
         beryllium, 
         first_wall_material, 
-        inconel718]
+        inconel718])
 
     (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, first_wall_material, inconel718, flibe, beryllium, boroncarbide)
     
