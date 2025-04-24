@@ -4,7 +4,7 @@ import structural_material_analysis as sma
 import tokamak_radiation_environment as tre
 
 
-def reactor_model(structural_material):
+def reactor_model(inner_vessel_material):
     """Returns an openmc model of the ARC-class model.
 
     Returns:
@@ -15,17 +15,18 @@ def reactor_model(structural_material):
     flibe = sma.materials.flibe
     beryllium = sma.materials.beryllium
     boroncarbide = sma.materials.boroncarbide
+    inconel718 = sma.materials.inconel718
 
     materials = openmc.Materials([
         dt_plasma,
         tungsten,
-        structural_material,
+        inner_vessel_material,
         flibe, 
         boroncarbide, 
         beryllium, 
         ])
 
-    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, structural_material, flibe, beryllium, boroncarbide)
+    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, inner_vessel_material, flibe, beryllium, inconel718, boroncarbide)
     
     ############################################################################
     # Define Settings

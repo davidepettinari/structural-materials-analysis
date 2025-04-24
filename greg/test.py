@@ -67,9 +67,9 @@ model.tallies.append(tally)
 
 model.export_to_xml()
 
-openmc.config['chain_file'] = r'/home/davide/openmc_models/CROSS_SECTIONS/decay/endfb-viii.0-chain/chain_endfb80_sfr.xml'
-model.settings.photon_transport = True
-model.settings.use_decay_photons = True
-d1s.prepare_tallies(model)
+# openmc.config['chain_file'] = r'/home/davide/openmc_models/CROSS_SECTIONS/decay/endfb-viii.0-chain/chain_endfb80_sfr.xml'
+# model.settings.photon_transport = True
+# model.settings.use_decay_photons = True
+# d1s.prepare_tallies(model)
 
 model.run()

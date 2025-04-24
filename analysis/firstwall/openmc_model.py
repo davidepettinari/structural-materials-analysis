@@ -24,7 +24,7 @@ def reactor_model(first_wall_material):
         first_wall_material, 
         inconel718])
 
-    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, first_wall_material, inconel718, flibe, beryllium, boroncarbide)
+    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, first_wall_material, inconel718, flibe, beryllium, inconel718, boroncarbide)
     
     ############################################################################
     # Define Settings

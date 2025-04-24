@@ -2,7 +2,7 @@ import openmc
 import tokamak_radiation_environment as tre
 import structural_material_analysis as sma
 
-def reactor_geometry(plasma_mat, firstwall_mat, structure_mat, breeder_mat, multiplier_mat, shield_mat):
+def reactor_geometry(plasma_mat, firstwall_mat, vessel_inner_mat, breeder_mat, multiplier_mat, vessel_outer_mat, shield_mat):
     """Create the reactor geometry."""
     # Create a list of all nodes
     plasma_nodes = (
@@ -99,7 +99,7 @@ def reactor_geometry(plasma_mat, firstwall_mat, structure_mat, breeder_mat, mult
     )
 
     vessel_inner_structure = tre.components.VesselInnerStructure(
-        first_wall=first_wall, thickness=1.5, material=structure_mat, angle=angle
+        first_wall=first_wall, thickness=1.5, material=vessel_inner_mat, angle=angle
     )
 
     vessel_cooling_channel = tre.components.VesselCoolingChannel(
@@ -119,7 +119,7 @@ def reactor_geometry(plasma_mat, firstwall_mat, structure_mat, breeder_mat, mult
     vessel_outer_structure = tre.components.VesselOuterStructure(
         vessel_neutron_multiplier=vessel_neutron_multiplier,
         thickness=3.0,
-        material=structure_mat,
+        material=vessel_outer_mat,
         angle=angle,
     )
 

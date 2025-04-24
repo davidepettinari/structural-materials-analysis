@@ -26,7 +26,7 @@ def reactor_model(first_wall_material):
         first_wall_material, 
         inconel718])
 
-    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, first_wall_material, inconel718, flibe, beryllium, boroncarbide)
+    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, first_wall_material, inconel718, flibe, beryllium, inconel718, boroncarbide)
     
     ############################################################################
     # Define Settings
@@ -90,7 +90,7 @@ def reactor_model(first_wall_material):
     flux_tally = openmc.Tally()
     flux_tally.filters = [fw_filter, dose_filter, photon_particle_filter]
     flux_tally.scores = ["flux"]
-    flux_tally.name = "photon_dose_on_mesh"
+    flux_tally.name = "photon_dose_on_mesh"                 
     tallies.append(flux_tally)
 
     model = openmc.Model(
@@ -141,7 +141,7 @@ if __name__ == "__main__":
 
     material_tag = args.m
     original_sp = "statepoint.100.h5"
-    renamed_sp = f"{material_tag}.h5"
+    renamed_sp = f"{material_tag}.d1s.h5"
     if os.path.exists(original_sp):
         os.rename(original_sp, renamed_sp)
         print(f"✔️ Renamed: {original_sp} → {renamed_sp}")
