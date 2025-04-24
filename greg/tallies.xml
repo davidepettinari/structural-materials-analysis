@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<tallies>
+  <filter id="13" type="cell">
+    <bins>227</bins>
+  </filter>
+  <filter id="10" type="particle">
+    <bins>photon</bins>
+  </filter>
+  <filter id="14" type="energyfunction">
+    <energy>10000.0 15000.0 20000.0 30000.0 40000.0 50000.0 60000.0 70000.0 80000.0 100000.0 150000.0 200000.0 300000.0 400000.0 500000.0 600000.0 800000.0 1000000.0 2000000.0 4000000.0 6000000.0 8000000.0 10000000.0</energy>
+    <y>0.0485179 0.125424 0.20496 0.299936 0.338052 0.357238 0.378012 0.419286 0.439931 0.517174 0.752344 1.004088 1.50834 1.99584 2.46568 2.90816 3.7269 4.48341 7.4896 12.0153 15.9873 19.9191 23.76</y>
+    <interpolation>linear-linear</interpolation>
+  </filter>
+  <filter id="12" type="cell">
+    <bins>178 179 180 181 182 230 231 232 233 234 235 236 237 238 239 636 637 638</bins>
+  </filter>
+  <filter id="9" type="particle">
+    <bins>neutron</bins>
+  </filter>
+  <tally id="4" name="sdr_dose">
+    <filters>13 10 14</filters>
+    <scores>flux</scores>
+  </tally>
+  <tally id="5" name="foil_activation">
+    <filters>12 9</filters>
+    <scores>(n,gamma) (n,p) (n,2n) (n,3n)</scores>
+  </tally>
+  <tally id="6" name="neutron_flux">
+    <filters>13 9</filters>
+    <scores>flux</scores>
+  </tally>
+</tallies>
