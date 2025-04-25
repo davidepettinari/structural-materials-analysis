@@ -91,7 +91,7 @@ E_d is 25eV for all other elements.
 
 [9] Valenza, D., et al., 2001. Fusion Engineering and Design 55, 411-418
 
-[10] 
+[10] Hernández, F.A., Pereslavtsev, P., 2018. Fusion Engineering and Design 137, 243-256
 
 
 
