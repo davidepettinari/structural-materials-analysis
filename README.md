@@ -89,7 +89,7 @@ E_d is 25eV for all other elements.
 
 [8] Stearney, E.R., et al., 2024. Beryllium Toxicity, in: StatPearls
 
-[9]
+[9] Valenza, D., et al., 2001. Fusion Engineering and Design 55, 411-418
 
 [10] 
 
