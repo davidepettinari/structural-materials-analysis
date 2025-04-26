@@ -58,7 +58,7 @@ E_d is 25eV for all other elements.
 
 - [x] Obtain discount code for submission 🚀
 - [x] Prepare Manuscript Summary
-- [ ] Submit Manuscript Summary
+- [x] Submit Manuscript Summary
 - [x] Geometry
 - [ ] Import the correct blanket dimension
 - [x] Source
