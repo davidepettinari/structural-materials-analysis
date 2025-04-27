@@ -95,6 +95,10 @@ E_d is 25eV for all other elements.
 
 [11] Pint, B.A., et al., 2024. Materials Assessment for FLiBe Fusion Blankets, Oak Ridge National Laboratory
 
+[12]
+
+[13]
+
 
 # Waiver for your submission to ‘Advancements in Fusion Neutronics and Applications in Blanket Technologies’
 DSC-08038817412PRD
