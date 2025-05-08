@@ -37,6 +37,14 @@ E_d is 25eV for all other elements.
 - [x] nbhfc
 - [x] hftac
 
+### TO DO
+- [] Leakage
+- [] Activation
+- [] Results from HPC4
+- [] Gamma dose rate D1
+- [] Neutron spectra for FISPACT-II
+
+
 ### Vacuum vessel materials
 - Inconel 718
 - Eurofer
