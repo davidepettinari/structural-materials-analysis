@@ -31,11 +31,11 @@ E_d is 25eV for all other elements.
 - [x] tinbc
 - [x] w
 - [x] zrnbc
-- [] vmoc
-- [] vtac
-- [] zrhfc
-- [] nbhfc
-- [] hftac
+- [x] vmoc
+- [x] vtac
+- [x] zrhfc
+- [x] nbhfc
+- [x] hftac
 
 ### Vacuum vessel materials
 - Inconel 718
