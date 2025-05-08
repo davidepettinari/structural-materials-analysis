@@ -27,6 +27,17 @@ E_d is 25eV for all other elements.
 [The FISPACT-II User Manual](https://fispact.ukaea.uk/wp-content/uploads/2021/05/FISPACT_manual_old.pdf)
 
 ## Materials
+### Firstwall materials
+- [x] tinbc
+- [x] w
+- [x] zrnbc
+- [] vmoc
+- [] vtac
+- [] zrhfc
+- [] nbhfc
+- [] hftac
+
+### Vacuum vessel materials
 - Inconel 718
 - Eurofer
 - Hiperfer
