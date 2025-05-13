@@ -41,7 +41,7 @@ def reactor_model(first_wall_material):
 
     settings = openmc.Settings()
     settings.batches = 100
-    settings.particles = 10000
+    settings.particles = int(1e8)
     settings.inactive = 0
     settings.run_mode = "fixed source"
     settings.source = source
