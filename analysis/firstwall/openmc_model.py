@@ -144,6 +144,18 @@ def reactor_model(first_wall_material):
         materials=materials, geometry=geometry, settings=settings, tallies=tallies
     )
     
+    # Absorption
+    # FW
+    absorption_fw_tally = openmc.Tally(name="absorption_fw")
+    absorption_fw_tally.filters = [fw_filter]
+    absorption_fw_tally.scores = ["absorption"]
+    tallies.append(absorption_fw_tally)
+    # Shield
+    absorption_shield_tally = openmc.Tally(name="absorption_shield")
+    absorption_shield_tally.filters = [shield_filter]
+    absorption_shield_tally.scores = ["absorption"]
+    tallies.append(absorption_shield_tally)
+    
     return model, root
 
 ############################################################################
