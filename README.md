@@ -38,9 +38,9 @@ E_d is 25eV for all other elements.
 - [x] hftac
 
 ### TO DO
-- [] Leakage
+- [x] Leakage
 - [] Activation
-- [] Results from HPC4
+- [x] Results from HPC4
 - [] Gamma dose rate D1
 - [] Neutron spectra for FISPACT-II
 
