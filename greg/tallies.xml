@@ -1,32 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <tallies>
-  <filter id="13" type="cell">
+  <filter id="5" type="cell">
     <bins>227</bins>
   </filter>
-  <filter id="10" type="particle">
+  <filter id="2" type="particle">
     <bins>photon</bins>
   </filter>
-  <filter id="14" type="energyfunction">
+  <filter id="6" type="energyfunction">
     <energy>10000.0 15000.0 20000.0 30000.0 40000.0 50000.0 60000.0 70000.0 80000.0 100000.0 150000.0 200000.0 300000.0 400000.0 500000.0 600000.0 800000.0 1000000.0 2000000.0 4000000.0 6000000.0 8000000.0 10000000.0</energy>
     <y>0.0485179 0.125424 0.20496 0.299936 0.338052 0.357238 0.378012 0.419286 0.439931 0.517174 0.752344 1.004088 1.50834 1.99584 2.46568 2.90816 3.7269 4.48341 7.4896 12.0153 15.9873 19.9191 23.76</y>
     <interpolation>linear-linear</interpolation>
   </filter>
-  <filter id="12" type="cell">
+  <filter id="7" type="parentnuclide">
+    <bins>Cd115 Zr89 Cd109 Mn57 Sn117_m1 V53 In114 S35 B12 Cu66 Co64 In112 Mn58 Fe61 Zr95 Cr51 Co57 Mn56 Fe55 Sn121 Nb92 Cr49 Nb98 Hg205 Mn54 V54 Sn113_m1 Be11 Mn52 Sn110 Sn111 Nb95 Nb91 Co58 Cd113 Y90 Pb202 Li8 O15 Mo101 Pb203 Cd117 Si31 In118 Be10 V50 In115 Sn123 Cu64 P33 In122 In119 Pb205 Ni65 Pb209 Si27 Nb96 Cd121 Tl204 Ni63 V52 Cd119 Tl206 Si33 Ti51 Tl208 Mo91 Co62 Sn125 Ni59 S37 Fe53 Cu62 P36 Pb207_m1 P32 P30 Sn113 Sc48 Sn123_m1 V49 P34 Ni57 In120 Co60_m1 In117 Mo93_m1 Sn119_m1 C14 Hg203 S31 Sc47 Cd116 Zr97 Pb204 Nb94 Zr93 Cr55 Tl207 Nb94_m1 Mo93 Co61 Al28 Fe59 Mn53 Mo99 Sn121_m1 In124 Nb100 N16 Sn125_m1 In116 Co60 Nb97 N13</bins>
+  </filter>
+  <filter id="4" type="cell">
     <bins>178 179 180 181 182 230 231 232 233 234 235 236 237 238 239 636 637 638</bins>
   </filter>
-  <filter id="9" type="particle">
+  <filter id="1" type="particle">
     <bins>neutron</bins>
   </filter>
-  <tally id="4" name="sdr_dose">
-    <filters>13 10 14</filters>
+  <tally id="1" name="sdr_dose">
+    <filters>5 2 6 7</filters>
     <scores>flux</scores>
   </tally>
-  <tally id="5" name="foil_activation">
-    <filters>12 9</filters>
+  <tally id="2" name="foil_activation">
+    <filters>4 1</filters>
     <scores>(n,gamma) (n,p) (n,2n) (n,3n)</scores>
   </tally>
-  <tally id="6" name="neutron_flux">
-    <filters>13 9</filters>
+  <tally id="3" name="neutron_flux">
+    <filters>5 1</filters>
     <scores>flux</scores>
   </tally>
 </tallies>

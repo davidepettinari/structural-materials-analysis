@@ -591,8 +591,8 @@
   </geometry>
   <settings>
     <run_mode>fixed source</run_mode>
-    <particles>1000</particles>
-    <batches>100</batches>
+    <particles>10000</particles>
+    <batches>500</batches>
     <source particle="neutron" strength="0.00200294" type="independent">
       <space type="point">
         <parameters>0 0 0</parameters>
@@ -1045,7 +1045,7 @@
       <interpolation>linear-linear</interpolation>
     </filter>
     <filter id="7" type="parentnuclide">
-      <bins>Sc48 Mn58 Tl206 Cd119 Ni65 Ni57 Nb94 Cr51 Al28 Zr95 Co58 N13 Co60 Tl207 Cr55 In124 Pb209 Co57 Nb97 Nb91 Ti51 Co62 Cu64 V52 In116 Cd109 Sn125 In118 S37 Zr89 Sn113_m1 Si33 Sn123_m1 S35 Sn123 S31 In122 Be11 Mn57 Sn117_m1 Si31 Tl208 Nb100 Hg205 Sn110 Co61 Sn119_m1 Si27 Nb94_m1 Nb92 Ni63 Mn54 Mn53 Sn113 B12 N16 Y90 In114 Cr49 V50 Ni59 Li8 Mo101 V53 Pb203 In117 Fe55 Nb95 P30 C14 Mn56 P34 Fe53 Cd113 P36 Sc47 In112 Sn125_m1 Mo91 Nb96 In115 In120 Pb204 Cu62 V54 Cd117 Pb202 Cd121 Sn111 Be10 Zr97 V49 Co64 Zr93 Cu66 Cd115 Mn52 Fe59 Pb205 P33 Cd116 Fe61 Mo93 Sn121 O15 Mo93_m1 Co60_m1 Mo99 Nb98 Sn121_m1 P32 In119 Pb207_m1 Hg203 Tl204</bins>
+      <bins>Cd115 Zr89 Cd109 Mn57 Sn117_m1 V53 In114 S35 B12 Cu66 Co64 In112 Mn58 Fe61 Zr95 Cr51 Co57 Mn56 Fe55 Sn121 Nb92 Cr49 Nb98 Hg205 Mn54 V54 Sn113_m1 Be11 Mn52 Sn110 Sn111 Nb95 Nb91 Co58 Cd113 Y90 Pb202 Li8 O15 Mo101 Pb203 Cd117 Si31 In118 Be10 V50 In115 Sn123 Cu64 P33 In122 In119 Pb205 Ni65 Pb209 Si27 Nb96 Cd121 Tl204 Ni63 V52 Cd119 Tl206 Si33 Ti51 Tl208 Mo91 Co62 Sn125 Ni59 S37 Fe53 Cu62 P36 Pb207_m1 P32 P30 Sn113 Sc48 Sn123_m1 V49 P34 Ni57 In120 Co60_m1 In117 Mo93_m1 Sn119_m1 C14 Hg203 S31 Sc47 Cd116 Zr97 Pb204 Nb94 Zr93 Cr55 Tl207 Nb94_m1 Mo93 Co61 Al28 Fe59 Mn53 Mo99 Sn121_m1 In124 Nb100 N16 Sn125_m1 In116 Co60 Nb97 N13</bins>
     </filter>
     <filter id="4" type="cell">
       <bins>178 179 180 181 182 230 231 232 233 234 235 236 237 238 239 636 637 638</bins>
