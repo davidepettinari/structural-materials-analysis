@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import openmc
+import re
 
 def extract_tbr_contributions(sp, tally_name):
     """
@@ -152,3 +153,19 @@ def compute_dpa_from_tally(df, number_of_neutrons_per_second, atomic_mass_u, den
         "number_of_atoms": number_of_atoms,
         "DPA": DPA
     }
+    
+def extract_leakage(file_path):
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    # Search for the line containing the Leakage Fraction
+    match = re.search(r'Leakage Fraction\s*=\s*([\d.eE+-]+)\s*\+/-\s*([\d.eE+-]+)', content)
+    
+    if match:
+        leakage = float(match.group(1))
+        error = float(match.group(2))
+        print(f"Leakage Fraction: {leakage:.5e} ± {error:.5e}")
+        return leakage, error
+    else:
+        print("Leakage Fraction not found in the file.")
+        return None, None
