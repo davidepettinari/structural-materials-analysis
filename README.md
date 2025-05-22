@@ -39,6 +39,7 @@ E_d is 25eV for all other elements.
 
 ### TO DO
 - [x] Leakage
+- [x] Absorption
 - [] Activation
 - [x] Results from HPC4
 - [] Gamma dose rate D1
