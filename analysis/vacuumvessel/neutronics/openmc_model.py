@@ -231,9 +231,9 @@ if __name__ == "__main__":
     if args.m not in available_materials:
         raise ValueError(f"Material '{args.m}' not recognized. Available: {list(available_materials)}")
 
-    first_wall_material = available_materials[args.m]
+    vacuum_vessel_material = available_materials[args.m]
 
-    model, _ = reactor_model(first_wall_material)
+    model, _ = reactor_model(vacuum_vessel_material)
     model.run(geometry_debug=False)
 
     material_tag = args.m
