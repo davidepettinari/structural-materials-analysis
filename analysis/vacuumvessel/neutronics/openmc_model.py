@@ -89,15 +89,18 @@ def reactor_model(inner_vessel_material):
     tbr_cc_tally.scores = ["(n,Xt)"]
     tbr_cc_tally.nuclides = [openmc.Nuclide("Li6"), openmc.Nuclide("Li7")]
     tallies.append(tbr_cc_tally)
+    
     tbr_blanket_tally = openmc.Tally(name="TBR blanket")
     tbr_blanket_tally.filters = [blanket_filter]
     tbr_blanket_tally.scores = ["(n,Xt)"]
     tbr_blanket_tally.nuclides = [openmc.Nuclide("Li6"), openmc.Nuclide("Li7")]
     tallies.append(tbr_blanket_tally)
+    
     tbr_tally = openmc.Tally(name="TBR")
     tbr_tally.scores = ["(n,Xt)"]
     tbr_tally.nuclides = [openmc.Nuclide("Li6"), openmc.Nuclide("Li7")]
     tallies.append(tbr_tally)
+    
     tbr_energy_tally = openmc.Tally(name="TBR(energy)")
     tbr_energy_tally.filters = [energy_filter]
     tbr_energy_tally.scores = ["(n,Xt)"]
