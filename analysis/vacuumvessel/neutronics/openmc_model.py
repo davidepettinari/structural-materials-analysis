@@ -105,6 +105,30 @@ def reactor_model(inner_vessel_material):
     tbr_energy_tally.filters = [energy_filter]
     tbr_energy_tally.scores = ["(n,Xt)"]
     tallies.append(tbr_energy_tally)
+    
+    # EM (energy absorbed in blanket / fusion neutron energy)
+    # BLANKET
+    heating_blanket_tally = openmc.Tally(name="heating_blanket")
+    heating_blanket_tally.scores = ["heating"]
+    heating_blanket_tally.filters = [blanket_filter]
+    tallies.append(heating_blanket_tally)
+    
+    # ABSORPTION
+    # FW
+    absorption_fw_tally = openmc.Tally(name="absorption_fw")
+    absorption_fw_tally.filters = [fw_filter]
+    absorption_fw_tally.scores = ["absorption"]
+    tallies.append(absorption_fw_tally)
+    # STR1
+    absorption_str1_tally = openmc.Tally(name="absorption_str1")
+    absorption_str1_tally.filters = [str1_filter]
+    absorption_str1_tally.scores = ["absorption"]
+    tallies.append(absorption_str1_tally)
+    # STR2
+    absorption_str2_tally = openmc.Tally(name="absorption_str2")
+    absorption_str2_tally.filters = [str2_filter]
+    absorption_str2_tally.scores = ["absorption"]
+    tallies.append(absorption_str2_tally)
 
     # NEUTRON SPECTRA
     # FW
