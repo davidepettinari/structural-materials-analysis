@@ -1,6 +1,10 @@
+import math
 import openmc
-from openmc.deplete import d1s
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import LogNorm
+from openmc.deplete import d1s
+from openmc.data.data import half_life
 import structural_material_analysis as sma
 import tokamak_radiation_environment as tre
 
