@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<materials>
+  <material depletable="true" id="1" name="Inconel 718" volume="3529943.32">
+    <density units="g/cm3" value="8.19"/>
+    <nuclide name="B10" wo="1.0095522731290291e-05"/>
+    <nuclide name="B11" wo="4.4904477268709704e-05"/>
+    <nuclide name="C12" wo="0.0007192689832223798"/>
+    <nuclide name="C13" wo="8.73101677762021e-06"/>
+    <nuclide name="Al27" wo="0.005"/>
+    <nuclide name="Si28" wo="0.0029252527902855225"/>
+    <nuclide name="Si29" wo="0.00015384292932231884"/>
+    <nuclide name="Si30" wo="0.00010490428039215867"/>
+    <nuclide name="P31" wo="0.000136"/>
+    <nuclide name="S32" wo="0.00012888531069925517"/>
+    <nuclide name="S33" wo="1.0470394353454881e-06"/>
+    <nuclide name="S34" wo="6.045407265191391e-06"/>
+    <nuclide name="S36" wo="2.2242600207958365e-08"/>
+    <nuclide name="Ti46" wo="0.0007128085694198449"/>
+    <nuclide name="Ti47" wo="0.0006568004090875696"/>
+    <nuclide name="Ti48" wo="0.006646054703024111"/>
+    <nuclide name="Ti49" wo="0.0004978971484352276"/>
+    <nuclide name="Ti50" wo="0.00048643917003324564"/>
+    <nuclide name="Cr50" wo="0.007930004583164795"/>
+    <nuclide name="Cr52" wo="0.1590287884675572"/>
+    <nuclide name="Cr53" wo="0.01837981495548285"/>
+    <nuclide name="Cr54" wo="0.004661391993795167"/>
+    <nuclide name="Mn55" wo="0.003184"/>
+    <nuclide name="Fe54" wo="0.009597448978601654"/>
+    <nuclide name="Fe56" wo="0.15623259892525618"/>
+    <nuclide name="Fe57" wo="0.0036726266432468824"/>
+    <nuclide name="Fe58" wo="0.0004973254528953001"/>
+    <nuclide name="Co59" wo="0.009098"/>
+    <nuclide name="Ni58" wo="0.35278795280709696"/>
+    <nuclide name="Ni60" wo="0.1405738052209552"/>
+    <nuclide name="Ni61" wo="0.006212635197807729"/>
+    <nuclide name="Ni62" wo="0.02013281709330764"/>
+    <nuclide name="Ni64" wo="0.005292789680832517"/>
+    <nuclide name="Cu63" wo="0.0018687972371509726"/>
+    <nuclide name="Cu65" wo="0.0008602027628490277"/>
+    <nuclide name="Nb93" wo="0.05125"/>
+    <nuclide name="Mo92" wo="0.004279726871020337"/>
+    <nuclide name="Mo94" wo="0.0027423521060921585"/>
+    <nuclide name="Mo95" wo="0.004788641638654298"/>
+    <nuclide name="Mo96" wo="0.0050829275871649825"/>
+    <nuclide name="Mo97" wo="0.002951666629796783"/>
+    <nuclide name="Mo98" wo="0.007560148568685957"/>
+    <nuclide name="Mo100" wo="0.0030945365985854843"/>
+  </material>
+  <material id="3" name="Tungsten">
+    <density units="g/cm3" value="19.3"/>
+    <nuclide name="W180" wo="0.001174575531392815"/>
+    <nuclide name="W182" wo="0.26227049476287323"/>
+    <nuclide name="W183" wo="0.14240602528446922"/>
+    <nuclide name="W184" wo="0.306581920873831"/>
+    <nuclide name="W186" wo="0.28756698354743376"/>
+  </material>
+  <material id="12" name="Beryllium">
+    <density units="g/cm3" value="1.848"/>
+    <nuclide name="Be9" wo="1.0"/>
+  </material>
+  <material id="13" name="Boron Carbide">
+    <density units="g/cm3" value="2.52"/>
+    <nuclide name="B10" wo="0.14366314312039463"/>
+    <nuclide name="B11" wo="0.6390078568796053"/>
+    <nuclide name="C12" wo="0.21472253963562718"/>
+    <nuclide name="C13" wo="0.0026064603643728332"/>
+  </material>
+  <material id="14" name="FLiBe" temperature="900.0">
+    <density units="g/cm3" value="1.94"/>
+    <nuclide ao="1.8" name="Li6"/>
+    <nuclide ao="0.2" name="Li7"/>
+    <nuclide ao="4.0" name="F19"/>
+    <nuclide ao="1.0" name="Be9"/>
+  </material>
+  <material id="15" name="dt_plasma">
+    <density units="g/cm3" value="1e-05"/>
+    <nuclide ao="1.0" name="H2"/>
+    <nuclide ao="1.0" name="H3"/>
+  </material>
+</materials>
