@@ -113,6 +113,16 @@ def reactor_model(inner_vessel_material):
     heating_blanket_tally.filters = [blanket_filter]
     tallies.append(heating_blanket_tally)
     
+    heating_nm_tally = openmc.Tally(name="heating_nm")
+    heating_nm_tally.scores = ["heating"]
+    heating_nm_tally.filters = [nm_filter]
+    tallies.append(heating_nm_tally)
+    
+    heating_cc_tally = openmc.Tally(name="heating_cc")
+    heating_cc_tally.scores = ["heating"]
+    heating_cc_tally.filters = [cc_filter]
+    tallies.append(heating_cc_tally)
+    
     # ABSORPTION
     # FW
     absorption_fw_tally = openmc.Tally(name="absorption_fw")
