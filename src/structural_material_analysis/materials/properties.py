@@ -42,4 +42,24 @@ structural = {
         "mass_u": 58.91,
         "Ed": 40.34,
     },
+    "ss316l": {
+        "mass_u": 56.60,
+        "Ed": 40.0,
+    },
+    "silicon_carbide": {
+        "mass_u": 23.31,
+        "Ed": 26.8,
+    },
+    "vcrti": {
+        "mass_u": 50.00,
+        "Ed": 40.0,
+    },
+    "ods_eurofer": {
+        "mass_u": 56.91,
+        "Ed": 40.13,
+    },
+    "ht9": {
+        "mass_u": 55.10,
+        "Ed": 40.97,
+    }
 }
