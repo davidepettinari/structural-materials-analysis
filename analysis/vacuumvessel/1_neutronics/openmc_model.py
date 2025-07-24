@@ -4,7 +4,7 @@ import structural_material_analysis as sma
 import tokamak_radiation_environment as tre
 
 
-def reactor_model(inner_vessel_material):
+def reactor_model(vacuum_vessel_material):
     """Returns an openmc model of the ARC-class model.
 
     Returns:
@@ -16,17 +16,22 @@ def reactor_model(inner_vessel_material):
     beryllium = sma.materials.beryllium
     boroncarbide = sma.materials.boroncarbide
     inconel718 = sma.materials.inconel718
+    ss316l = sma.materials.ss316l
+    silicon_carbide = sma.materials.silicon_carbide
+    vcrti = sma.materials.vcrti
+    ods_eurofer = sma.materials.ods_eurofer
+    ht9 = sma.materials.ht9
 
     materials = openmc.Materials([
         dt_plasma,
         tungsten,
-        inner_vessel_material,
+        vacuum_vessel_material,
         flibe, 
         boroncarbide, 
         beryllium, 
         ])
 
-    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, inner_vessel_material, flibe, beryllium, inconel718, boroncarbide)
+    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, vacuum_vessel_material, flibe, beryllium, vacuum_vessel_material, boroncarbide)
     
     ############################################################################
     # Define Settings
@@ -42,7 +47,7 @@ def reactor_model(inner_vessel_material):
     source.energy = openmc.stats.muir(e0=14080000.0, m_rat=5.0, kt=20000.0)
 
     settings = openmc.Settings()
-    settings.batches = 10
+    settings.batches = 100
     settings.particles = 10000
     settings.inactive = 0
     settings.run_mode = "fixed source"
@@ -254,6 +259,10 @@ def reactor_model(inner_vessel_material):
 available_materials = {
     "inconel718": sma.materials.inconel718,
     "ss316l": sma.materials.ss316l,
+    "silicon_carbide": sma.materials.silicon_carbide,
+    "vcrti": sma.materials.vcrti,
+    "ods_eurofer": sma.materials.ods_eurofer,
+    "ht9": sma.materials.ht9
 }
 
 if __name__ == "__main__":
@@ -265,7 +274,7 @@ if __name__ == "__main__":
         "-m",
         type=str,
         default="inconel718",
-        help="Material to assign to first wall (e.g. inconel718, ss316l, eurofer, etc.)"
+        help="Material to assign to first wall (e.g. inconel718, ss316l, ods_eurofer, etc.)"
     )
     args = parser.parse_args()
 
