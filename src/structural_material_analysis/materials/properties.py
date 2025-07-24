@@ -38,7 +38,7 @@ firstwall = {
 }
 
 structural = {
-    "inconel-718": {
+    "inconel718": {
         "mass_u": 58.91,
         "Ed": 40.34,
     },
