@@ -42,7 +42,7 @@ def reactor_model(inner_vessel_material):
     source.energy = openmc.stats.muir(e0=14080000.0, m_rat=5.0, kt=20000.0)
 
     settings = openmc.Settings()
-    settings.batches = 100
+    settings.batches = 10
     settings.particles = 10000
     settings.inactive = 0
     settings.run_mode = "fixed source"
@@ -122,6 +122,10 @@ def reactor_model(inner_vessel_material):
     heating_cc_tally.scores = ["heating"]
     heating_cc_tally.filters = [cc_filter]
     tallies.append(heating_cc_tally)
+    
+    heating_full_tally = openmc.Tally(name="heating_full")
+    heating_full_tally.scores = ["heating"]
+    tallies.append(heating_full_tally)
     
     # ABSORPTION
     # FW
