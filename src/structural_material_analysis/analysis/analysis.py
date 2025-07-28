@@ -189,3 +189,45 @@ def extract_leakage(file_path):
     else:
         print("Leakage Fraction not found in the file.")
         return None, None
+    
+def plot_multiple_neutron_spectra(tally_list, region_names, region_volumes_cm3, number_of_neutrons_per_second):
+    """
+    Plot neutron spectra from multiple OpenMC tallies on the same graph.
+
+    Parameters:
+        tally_list (list): List of 6 openmc.Tally objects.
+        region_names (list): List of region names (strings) for legend.
+        region_volumes_cm3 (list): List of volumes for each region in cm³.
+        number_of_neutrons_per_second (float): Source neutron rate in n/s.
+    """
+    energy_bins = openmc.mgxs.GROUP_STRUCTURES["CCFE-709"]
+    energy_midpoints = [(energy_bins[i] + energy_bins[i+1]) / 2 / 1e6 for i in range(len(energy_bins) - 1)]  # in MeV
+
+    plt.figure(figsize=(9, 6))
+
+    for tally, region_name, volume in zip(tally_list, region_names, region_volumes_cm3):
+        df = tally.get_pandas_dataframe()
+        flux_raw = df['mean'].values
+        flux_err_raw = df['std. dev.'].values
+
+        flux = (flux_raw / volume) * number_of_neutrons_per_second
+        flux_err = (flux_err_raw / volume) * number_of_neutrons_per_second
+        print(f"Mean neutron flux in {region_name}: {sum(flux):.2e} ± {sum(flux_err):.2e} n/cm²-s")
+
+        plt.step(energy_midpoints, flux, where='mid', label=region_name)
+        # (Optional: plot uncertainty band)
+        plt.fill_between(energy_midpoints, flux - flux_err, flux + flux_err, alpha=0.2)
+
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.xlabel("Energy [MeV]")
+    plt.ylabel("Flux [n/cm²-s]")
+    plt.xlim(2e-7, 30)
+    plt.ylim(1e3, 1e14)
+    plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+    plt.legend()
+    plt.tight_layout()
+    plt.gca().spines['top'].set_visible(False)
+    plt.gca().spines['right'].set_visible(False)
+    plt.savefig('flux_comparison.pdf', format='pdf', bbox_inches='tight')
+    plt.show()
