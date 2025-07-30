@@ -61,5 +61,9 @@ structural = {
     "ht9": {
         "mass_u": 55.10,
         "Ed": 40.97,
+    },
+    "rusfer": {
+        "mass_u": 56.00,
+        "Ed": 40.0,
     }
 }
