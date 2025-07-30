@@ -21,6 +21,7 @@ def reactor_model(vacuum_vessel_material):
     vcrti = sma.materials.vcrti
     ods_eurofer = sma.materials.ods_eurofer
     ht9 = sma.materials.ht9
+    rusfer = sma.materials.rusfer
 
     materials = openmc.Materials([
         dt_plasma,
@@ -262,7 +263,8 @@ available_materials = {
     "silicon_carbide": sma.materials.silicon_carbide,
     "vcrti": sma.materials.vcrti,
     "ods_eurofer": sma.materials.ods_eurofer,
-    "ht9": sma.materials.ht9
+    "ht9": sma.materials.ht9,
+    "rusfer": sma.materials.rusfer
 }
 
 if __name__ == "__main__":
