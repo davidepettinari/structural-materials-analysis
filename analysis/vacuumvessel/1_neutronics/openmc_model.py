@@ -135,17 +135,17 @@ def reactor_model(vacuum_vessel_material):
     # ABSORPTION
     # FW
     absorption_fw_tally = openmc.Tally(name="absorption_fw")
-    absorption_fw_tally.filters = [fw_filter]
+    absorption_fw_tally.filters = [fw_filter, neutron_particle_filter]
     absorption_fw_tally.scores = ["absorption"]
     tallies.append(absorption_fw_tally)
     # STR1
     absorption_str1_tally = openmc.Tally(name="absorption_str1")
-    absorption_str1_tally.filters = [str1_filter]
+    absorption_str1_tally.filters = [str1_filter, neutron_particle_filter]
     absorption_str1_tally.scores = ["absorption"]
     tallies.append(absorption_str1_tally)
     # STR2
     absorption_str2_tally = openmc.Tally(name="absorption_str2")
-    absorption_str2_tally.filters = [str2_filter]
+    absorption_str2_tally.filters = [str2_filter, neutron_particle_filter]
     absorption_str2_tally.scores = ["absorption"]
     tallies.append(absorption_str2_tally)
 
