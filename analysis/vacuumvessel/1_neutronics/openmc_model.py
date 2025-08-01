@@ -13,6 +13,7 @@ def reactor_model(vacuum_vessel_material):
     dt_plasma = sma.materials.dt_plasma
     tungsten = sma.materials.tungsten
     flibe = sma.materials.flibe
+    natural_flibe = sma.materials.natural_flibe
     beryllium = sma.materials.beryllium
     boroncarbide = sma.materials.boroncarbide
     inconel718 = sma.materials.inconel718
@@ -23,16 +24,18 @@ def reactor_model(vacuum_vessel_material):
     ht9 = sma.materials.ht9
     rusfer = sma.materials.rusfer
 
+    molten_salt = natural_flibe
+    
     materials = openmc.Materials([
         dt_plasma,
         tungsten,
         vacuum_vessel_material,
-        flibe, 
+        molten_salt,
         boroncarbide, 
         beryllium, 
         ])
 
-    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, vacuum_vessel_material, flibe, beryllium, vacuum_vessel_material, boroncarbide)
+    (root, geometry) = sma.geometry.reactor_geometry(dt_plasma, tungsten, vacuum_vessel_material, molten_salt, beryllium, vacuum_vessel_material, boroncarbide)
     
     ############################################################################
     # Define Settings
@@ -248,6 +251,33 @@ def reactor_model(vacuum_vessel_material):
     damage_str2_tally.scores = ["damage-energy"]
     damage_str2_tally.filters = [str2_filter]
     tallies.append(damage_str2_tally)
+    
+    # H & He PRODUCTION
+    # STR1
+    h1_str1_tally = openmc.Tally(name="H1-production_str1") 
+    h1_str1_tally.scores = ["H1-production"]
+    h1_str1_tally.filters = [str1_filter, neutron_particle_filter]
+    tallies.append(h1_str1_tally)
+    
+    h2_str1_tally = openmc.Tally(name="H2-production_str1")
+    h2_str1_tally.scores = ["H2-production"]
+    h2_str1_tally.filters = [str1_filter, neutron_particle_filter]
+    tallies.append(h2_str1_tally)
+    
+    h3_str1_tally = openmc.Tally(name="H3-production_str1")
+    h3_str1_tally.scores = ["H3-production"]
+    h3_str1_tally.filters = [str1_filter, neutron_particle_filter]
+    tallies.append(h3_str1_tally)
+    
+    he3_str1_tally = openmc.Tally(name="He3-production_str1")
+    he3_str1_tally.scores = ["He3-production"]
+    he3_str1_tally.filters = [str1_filter, neutron_particle_filter]
+    tallies.append(he3_str1_tally)
+    
+    he4_str1_tally = openmc.Tally(name="He4-production_str1")
+    he4_str1_tally.scores = ["He4-production"]
+    he4_str1_tally.filters = [str1_filter, neutron_particle_filter]
+    tallies.append(he4_str1_tally)
 
     model = openmc.Model(
         materials=materials, geometry=geometry, settings=settings, tallies=tallies
