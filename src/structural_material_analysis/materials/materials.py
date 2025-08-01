@@ -91,7 +91,7 @@ rusfer.add_element("Ta", 0.0015, "wo")
 rusfer.add_element("V", 0.004, "wo")
 rusfer.add_element("N", 0.0007, "wo")
 rusfer.add_element("Fe", 0.8492, "wo")
-rusfer.set_density("g/cm3", 7.)
+rusfer.set_density("g/cm3", 7.85)
 
 # First wall materials
 tungsten = openmc.Material(name="Tungsten")
@@ -161,7 +161,12 @@ flibe.add_element("Be", 1.0)
 flibe.add_nuclide("Li6", 1.8)
 flibe.add_nuclide("Li7", 0.2)
 flibe.set_density("g/cm3", 1.94)
-flibe.temperature = 900.0
+
+natural_flibe = openmc.Material(name="Natural FLiBe")
+natural_flibe.add_element("F", 4.0)
+natural_flibe.add_element("Be", 1.0)
+natural_flibe.add_element("Li", 2.0)
+natural_flibe.set_density("g/cm3", 1.94)
 
 dt_plasma = openmc.Material(name="dt_plasma")
 dt_plasma.add_nuclide("H2", 1.0)
