@@ -127,3 +127,4 @@ You can enter this code during the submission process for a Type A article (e.g.
 
 The code is linked to your davide.pettinari@polito.it email.
 
+## Paper accetato, revisione iniziata a vienna il 03/09
