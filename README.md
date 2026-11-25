@@ -22,7 +22,6 @@ provides [`openmc.deplete.d1s`](https://docs.openmc.org/en/stable/releasenotes/0
 
 ### 1. Create an environment with OpenMC
 
-
 For more detailed instructions on configuring and installing OpenMC, see the [Installation and Configuration](https://docs.openmc.org/en/stable/usersguide/install.html#usersguide-install) section of the official OpenMC User's Manual.
 
 
