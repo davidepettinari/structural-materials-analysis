@@ -133,7 +133,7 @@ def reactor_geometry(plasma_mat, firstwall_mat, vessel_inner_mat, breeder_mat, m
 
     blanket = tre.components.Blanket(
         vacuum_vessel=vessel_outer_structure,
-        thickness=50,
+        thickness=50.0,
         material=breeder_mat,
         nodes=None,
         # nodes=blanket_nodes,
@@ -144,7 +144,7 @@ def reactor_geometry(plasma_mat, firstwall_mat, vessel_inner_mat, breeder_mat, m
 
     shield = tre.components.Shield(
         blanket=blanket,
-        thickness=30,
+        thickness=30.0,
         material=shield_mat,
         nodes=None,
         angle=angle,
@@ -163,7 +163,7 @@ def reactor_geometry(plasma_mat, firstwall_mat, vessel_inner_mat, breeder_mat, m
     ]
 
     # building enclosure
-    enclosure_surf = openmc.Sphere(r=5000, boundary_type="vacuum")
+    enclosure_surf = openmc.Sphere(r=5000.0, boundary_type="vacuum")
     enclosure_region = -enclosure_surf
     for rc in reactor_components:
         enclosure_region = enclosure_region & ~(rc.region)
