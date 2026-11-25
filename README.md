@@ -12,96 +12,17 @@ They import `structural_material_analysis` from the `src/` directory.
 
 | Dependency | Purpose |
 |------------|---------|
-| Python 3 | Run the package, scripts, and notebooks; the installation example below uses Python 3.11. |
 | [OpenMC](https://docs.openmc.org/en/stable/usersguide/install.html) | Neutron and photon transport, nuclear data, and depletion calculations. Both the executable and the Python API are required. |
 | [tokamak_radiation_environment](https://github.com/davidepettinari/tokamak_radiation_environment) | Build the tokamak geometry components. |
-| NumPy | Numerical operations in the simulation scripts and notebooks. |
-| pandas | Process tally results and tabular data. |
-| Matplotlib | Plot spectra and analysis results. |
-| JupyterLab or Jupyter Notebook | Required only to open and run the notebooks. |
-| Git | Clone this repository and install the geometry dependency from GitHub. |
-| pip and setuptools | Install the local Python packages; setuptools is the build backend. |
 
 The shutdown dose rate workflows require **OpenMC 0.15.1 or later**, which
 provides [`openmc.deplete.d1s`](https://docs.openmc.org/en/stable/releasenotes/0.15.1.html).
-OpenMC's own dependencies, including h5py and SciPy, are installed by its package
-manager. Nuclear data libraries must be downloaded and configured separately.
 
 ## Installation
 
 ### 1. Create an environment with OpenMC
 
-With Conda installed, create and activate an environment on Linux or macOS:
-
-```bash
-conda create --name structural-materials --channel conda-forge --strict-channel-priority python=3.11 "openmc>=0.15.1" numpy pandas matplotlib pip
-conda activate structural-materials
-```
-
-For other installation methods, including Docker, follow the
-[OpenMC installation guide](https://docs.openmc.org/en/stable/usersguide/install.html).
-Use the same Python environment for all the following steps.
-
 ### 2. Install the geometry dependency and this package
-
-```bash
-python -m pip install "git+https://github.com/davidepettinari/tokamak_radiation_environment.git"
-git clone https://github.com/davidepettinari/structural-materials-analysis.git
-cd structural-materials-analysis
-python -m pip install -e .
-```
-
-If you already cloned the repository, run `python -m pip install -e .` from its
-root directory. The editable installation makes changes under `src/` available
-without reinstalling. For a regular installation, use `python -m pip install .`.
-
-The current `pyproject.toml` does not declare runtime dependencies, so install
-the dependencies above before using the package.
-
-To work with the notebooks, also install JupyterLab in this environment:
-
-```bash
-python -m pip install jupyterlab
-```
-
-### 3. Configure nuclear data
-
-Download OpenMC-compatible HDF5 data from the
-[OpenMC nuclear data collection](https://openmc.org/data/).
-The models enable photon transport, so the library must include both neutron
-and photon interaction data for the selected materials. Set the path to its
-`cross_sections.xml` file:
-
-```bash
-export OPENMC_CROSS_SECTIONS="/absolute/path/to/nuclear_data/cross_sections.xml"
-```
-
-Activation, depletion, and D1S calculations also require a compatible depletion
-chain XML file, including decay photon data for D1S:
-
-```bash
-export OPENMC_CHAIN_FILE="/absolute/path/to/chain_endfb80_sfr.xml"
-```
-
-Replace these example paths with your own. See the
-[OpenMC data configuration guide](https://docs.openmc.org/en/stable/usersguide/data.html)
-for details.
-
-Some activation and shutdown dose rate scripts and notebooks currently set
-`openmc.config['chain_file']` or `openmc.config['cross_sections']` to absolute
-paths on the author's machine. Update those assignments to your local paths,
-or remove them to use the environment variables above: explicit assignments
-override the environment configuration.
-
-### 4. Check the installation
-
-```bash
-openmc --version
-python -c "import openmc; from openmc.deplete import d1s; import tokamak_radiation_environment; import structural_material_analysis; print('Imports successful')"
-```
-
-These checks verify the executable and package imports. They do not run a
-transport calculation or validate the nuclear data configuration.
 
 ## Repository structure
 
@@ -143,16 +64,6 @@ The scripts write a statepoint named `<material>.h5` in the working directory.
 The postprocessing notebooks read these files from their sibling `results/`
 directory; place new results there or update the notebook paths. The first wall
 notebook also reads simulation stdout logs from `results/output/<material>.o`.
-
-To open the notebooks, run `jupyter lab` from the repository root and select the
-installed environment as the kernel.
-
-## Development directions
-
-- Extend the current CSG neutronics and activation workflows.
-- Develop a DAGMC model.
-- Explore CAD conversion and meshing with GEOUNED, StellarMesh, cad2openmc, and
-  Attila4MC.
 
 ## Atomic displacement energies used to compute DPA
 
@@ -208,14 +119,3 @@ The broader list of candidate materials is:
 - G91 T1
 - G91 T2
 - Silicon Carbide
-- other
-
-## Analysis
-
-| Function | Metric | Goal |
-|---------|--------|------|
-| Breed tritium | TBR | ≥ 1.1 |
-| Capture neutron energy | EM | > 1 |
-| Shield magnets | Magnet lifetime | ≥ 5 FPY |
-| Activation analysis | Dose rate | < 100 years |
-| Neutron damage | DPA | ≥ 5 years |
