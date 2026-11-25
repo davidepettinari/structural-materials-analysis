@@ -24,6 +24,12 @@ provides [`openmc.deplete.d1s`](https://docs.openmc.org/en/stable/releasenotes/0
 
 ### 2. Install the geometry dependency and this package
 
+```bash
+git clone https://github.com/davidepettinari/structural-materials-analysis.git
+cd structural-materials-analysis
+pip install -e .
+```
+
 ## Repository structure
 
 ```text
