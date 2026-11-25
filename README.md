@@ -13,7 +13,7 @@ They import `structural_material_analysis` from the `src/` directory.
 | Dependency | Purpose |
 |------------|---------|
 | [OpenMC](https://docs.openmc.org/en/stable/usersguide/install.html) | Neutron and photon transport, nuclear data, and depletion calculations. Both the executable and the Python API are required. |
-| [tokamak_radiation_environment](https://github.com/davidepettinari/tokamak_radiation_environment) | Build the tokamak geometry components. |
+| [tokamak_radiation_environment](https://github.com/SteSeg/tokamak_radiation_environment.git) | Build the tokamak geometry components. |
 
 The shutdown dose rate workflows require **OpenMC 0.15.1 or later**, which
 provides [`openmc.deplete.d1s`](https://docs.openmc.org/en/stable/releasenotes/0.15.1.html).
