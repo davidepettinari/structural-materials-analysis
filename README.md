@@ -70,7 +70,7 @@ options. Review `settings.particles` and `settings.batches` before a simulation:
 the first wall model currently uses 100 batches of 100 million particles each.
 
 The scripts write a statepoint named `<material>.h5` in the working directory.
-The postprocessing notebooks read these files from their sibling `results/`
+The postprocessing notebooks read these files from their `natural_flibe_results/` or `enr_flibe_results/`
 directory; place new results there or update the notebook paths. The first wall
 notebook also reads simulation stdout logs from `results/output/<material>.o`.
 
