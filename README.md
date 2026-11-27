@@ -94,21 +94,8 @@ The displacement threshold energy, E_d, is 25 eV for all other elements.
 
 [The FISPACT-II User Manual](https://fispact.ukaea.uk/wp-content/uploads/2021/05/FISPACT_manual_old.pdf)
 
-## Materials
 
-### First wall materials
-
-- [x] tinbc
-- [x] tungsten
-- [x] zrnbc
-- [x] vmoc
-- [x] vtac
-- [x] zrhfc
-- [x] zrtac
-- [x] nbhfc
-- [x] hftac
-
-### Vacuum vessel materials
+## Vacuum vessel materials
 
 The neutronics script currently accepts `inconel718`, `ss316l`,
 `silicon_carbide`, `vcrti`, `ods_eurofer`, `ht9`, and `rusfer`.
